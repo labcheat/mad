@@ -1,50 +1,94 @@
-Dialer program
-Dialer.kt
-package com.example.dialer2
+package com.example.dailer
+
 import android.content.Intent
 import android.net.Uri
+import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.ContactsContract
-import androidx.appcompat.app.AppCompatActivity import kotlinx.android.synthetic.main.activity_main.*
-class MainActivity : AppCompatActivity() {
-override fun onCreate(savedInstanceState: Bundle?) { super.onCreate(savedInstanceState) setContentView(R.layout.activity_main)
-zero.setOnClickListener { pressButton("0", true)
-}
-one.setOnClickListener { pressButton("1", true)
-}
-two.setOnClickListener { pressButton("2", true)
-}
-three.setOnClickListener { pressButton("3", true)
-}
-four.setOnClickListener { pressButton("4", true)
-}
-five.setOnClickListener { pressButton("5", true)
-}
-six.setOnClickListener { pressButton("6", true)
-}
-seven.setOnClickListener { pressButton("7", true)
-}
-eight.setOnClickListener { pressButton("8", true)
-}
-nine.setOnClickListener { pressButton("9", true)
-}
-star.setOnClickListener { pressButton("*", true)
-}
-hash.setOnClickListener { pressButton("#", true)
-}
-clear.setOnClickListener { contact.text = ""
-}
-call.setOnClickListener {
-val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "${contact.text}")) startActivity(intent)
-}
-save.setOnClickListener {
-val intent = Intent(ContactsContract.Intents.SHOW_OR_CREATE_CONTACT, Uri.parse("tel:" +
-contact.text)) intent.putExtra(ContactsContract.Intents.EXTRA_FORCE_CREATE, true) startActivity(intent)
-}
-}
-private fun pressButton(string: String, clear: Boolean) { if (!clear) {
-contact.text = "" } else {
-contact.append(string) }
-}
+import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
+import org.jetbrains.annotations.Contract
 
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        var dail1:String =""
+
+        val zero = findViewById<Button>(R.id.zero)
+        val one = findViewById<Button>(R.id.one)
+        val two = findViewById<Button>(R.id.two)
+        val three = findViewById<Button>(R.id.three)
+        val four = findViewById<Button>(R.id.four)
+        val five = findViewById<Button>(R.id.five)
+        val six = findViewById<Button>(R.id.six)
+        val seven = findViewById<Button>(R.id.seven)
+        val eight = findViewById<Button>(R.id.eight)
+        val nine = findViewById<Button>(R.id.nine)
+        val hash = findViewById<Button>(R.id.hash)
+        val star = findViewById<Button>(R.id.star)
+        val call = findViewById<Button>(R.id.call)
+        val save = findViewById<Button>(R.id.save)
+        val dail = findViewById<TextView>(R.id.dail)
+
+        zero.setOnClickListener {
+            dail1 += "0"
+            dail.text = dail1
+        }
+        one.setOnClickListener {
+            dail1 += "1"
+            dail.text = dail1
+        }
+        two.setOnClickListener {
+            dail1 += "2"
+            dail.text = dail1
+        }
+        three.setOnClickListener {
+            dail1 += "3"
+            dail.text = dail1
+        }
+        four.setOnClickListener {
+            dail1 += "4"
+            dail.text = dail1
+        }
+        five.setOnClickListener {
+            dail1 += "5"
+            dail.text = dail1
+        }
+        six.setOnClickListener {
+            dail1 += "6"
+            dail.text = dail1
+        }
+        seven.setOnClickListener {
+            dail1 += "7"
+            dail.text = dail1
+        }
+        eight.setOnClickListener {
+            dail1 += "8"
+            dail.text = dail1
+        }
+        nine.setOnClickListener {
+            dail1 += "9"
+            dail.text = dail1
+        }
+        star.setOnClickListener {
+            dail1 += "*"
+            dail.text = dail1
+        }
+        hash.setOnClickListener {
+            dail1 += "#"
+            dail.text = dail1
+        }
+        call.setOnClickListener {
+            val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$dail1"))
+            startActivity(intent)
+        }
+        save.setOnClickListener {
+            val intent = Intent(ContactsContract.Intents.SHOW_OR_CREATE_CONTACT,Uri.parse("tel:"+dail1))
+            startActivity(intent)
+        }
+    }
 }
